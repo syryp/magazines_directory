@@ -56,7 +56,7 @@ class AuthorsController extends Controller
                 'firstname' => $data['firstname'],
                 'surname' => $data['surname'],
                 'patronymic' => array_key_exists('patronymic', $data) ?  $data['patronymic'] : null,
-                ]);
+            ]);
     }
 
     public function deleteAuthor(Request $request): void {

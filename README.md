@@ -1,64 +1,138 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Проект по ТЗ справочник журналов
+Добрый день,
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+После установки проекта надо :
 
-## About Laravel
+1. Подключить базу данных в файле env.
+```
+DB_PORT=5432
+DB_DATABASE=magazines_directory
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2. Создать ключ для приложения
+```
+php artisan key:generate
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+3. Запустить миграции
+```
+php artisan migrate
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+4. Настроить symbolic link для храния файлов
+```
+php artisan storage:link
+```
 
-## Learning Laravel
+## Ответы на вопросы сопровождающие ТЗ
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#PHP
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Что такое тип данных?**
 
-## Laravel Sponsors
+_-тип данных определяет какой набор данных будет храниться в переменной_
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Какие есть типы данных?**
 
-### Premium Partners
+_-int, float, bool, char, string, array_
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
 
-## Contributing
+**PHP строго или не строго типизированный?**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+_-Исторически, PHP не строго типизированный язык, но с каждой обновой становится все строже_
 
-## Code of Conduct
+**В чем разница между этими типами?**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+_-в том сколько памяти они занимают и каким образом в ней хранятся_
 
-## Security Vulnerabilities
+**Можно ли включить строгую типизацию?**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+_-Можно задавать тип параметрам методов и значениям возвращаемых данных. Так же можно declare(strict_types=1)._
 
-## License
+**Разница между строгим и нестрогим сравнением?**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+_-Строгое сравнение проверяет одинаковый ли тип данных_
+
+**Как можно защититься от SQL-инъекций?**
+
+_1. избегать прямых запросов в базу данных_
+_2. проверять и обрабатывать входящие данные на нежелательные выражения/символы_
+
+**Что такое namespace-ы и зачем они нужны?**
+
+_-пространства имен нужны для того то бы избежать конфликтов имен при импортах и собрать группу функционала под одним namespace'ом_
+
+**Что такое static функция и чем она отличается от “обычной” (не static)?**
+
+_-static методы вызываются от самого класса, обычные вызываются от объекта этого класса_
+
+**Какая разница между require (), require once (), include () и include once ()?**
+
+~~здесь мне пришлось загуглить ответ~~
+_-разница между require() и include() в том что при возникновении ошибки require() прерывает исполнение скрипта и выкидывает ошибкую include() же выдает предупреждение но не останавливает выполнение кода_
+_-добавление once() предотвращает вызов одного и того же скрипта несколько раз_
+
+**Назови по памяти любые функции для работы со строками, массивами и файлами.**
+
+_regex_replace(), strtolower(), strtoupper(), trim()_
+_implode(), array_flip(), array_merge(), asearch(), array_key_exists()_
+_mkdir(), copy(), unlink(), file_exists()_
+
+**Можно ли в PHP создавать экземпляры классов и обращаться к их методам и свойствам зная только название/неймспейс класса?**
+
+_Можно, но мне не нравится так делать_
+
+#OOP
+
+
+
+**Инкапсуляция/наследование/полиморфизм**
+
+_-Инкапсуляция это практика по которой к ряду свойств данного класса нету прямого доступа. Для чтения используются getters а для записи setters _
+_-Наследование позволяет нам определить родительский класс и от него создавать дочерние классы, которые будут наследовать свойства/методы родителя_
+_-Полиморфизм нужен когда мы хотим что бы у одного метода в разных дочерних классах была функциональность_
+
+**Поддерживает ли РНР множественное наследование?**
+
+_-нет, но это "обходится" посредством трейтов_
+
+**Что такое абстрактные классы/методы?**
+
+_-Абстрактный класс это класс от которого нельзя создать объект, его методы так же не описываются.Он нужен для того что бы быть унаследованным. При наследовании данного класса дочерними классами, в них придется описать каждый абстрактный метод_
+
+**Что такое интерфейсы?**
+
+
+
+**Что такое traits?**
+
+_-traits позволяют обойти ограничение на множественное наследование в PHP. В них описываются методы которые при использовании данного трейта классом станут ему доступны._
+
+**Какие есть области видимости в PHP ?**
+
+_-Глобальная, локальная_
+
+**Что означает MVC и что делает каждый компонент?**
+
+
+
+
+**Какие магические методы знаешь? Что это вообще такое?**
+
+```
+__construct()
+```
+_-Нечасто доводилось использовать но как я понимаю это вложенные в php методы которые можно использовать в классах_
+
+**Список всех магических методов:**
+Из гугла
+```
+__construct(), __destruct(), __call(), __callStatic(), __get(), __set(), __isset(), __unset(), __sleep(), __wakeup(), __toString(), __invoke(), __set_state(), __clone() и __debugInfo()
+```
+**В чем разница между абстрактным классом и интерфейсом?**
+
+_-В интерфейсе описываются только методы, в абстрактном классе есть так же свойства_
+
+**Самые популярные паттерны проектирования?**
